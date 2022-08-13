@@ -16,39 +16,61 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack{
-                Text("حاسبه الدرجات")
+                Text("حاسبة الدرجات")
             
-            .font(.largetitle)
-             .color(.white)
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(0)
                 Spacer()
                 Image("pic1")
                     .resizable()
                     .frame(width: 200, height: 200)
-                TextField("enter your grade , text: $finalgrade", text: <#Binding<String>#>)
+                Spacer()
+                // .padding()
+                TextField("enter your grade", text: $finalgrade)
                     .background(.white)
                     .textFieldStyle(
+                    
                 .roundedBorder)
+                Spacer()
+            
                 Text("احسب درجتي")
                     .frame(width: 200, height: 40)
-                    .background(.yellow)
-                    .onTapGesture {
-                        if (Double(finalgrade)??0)
-                            >=90{
-            gradedes= "امتياز"
-                            
-                            else{
+                    .background(Color.yellow)
+                
+                    .onTapGesture{
+                    
+                        if (Double(finalgrade) ?? 0)
+                            >= 90{
+            gradedes = "امتياز"
+                        }
+                        if else (Double(finalgrade)?? 0)>=80 {
+                            gradedes = "جيد جدا "
+                        }
+                        if else (Double(finalgrade)?? 0) >=70 {
+                         gradedes = "جيد"
+                        }
+                        if else (Double(finalgrade)?? 0) >=60 {
+                         gradedes = "مقبول"
+                        }
+        
+                        else {
                 gradedes = "رسوب"
                             }
-                    }
+                    Spacer()
                 Text("لقد حصلت على درجه")
                 Spacer()
+                    
                 Text(gradedes)
             }.padding()
+                
         
     }
     
 }
-
+    }
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
@@ -56,4 +78,4 @@ struct ContentView_Previews: PreviewProvider {
 }
         
         
-    }
+    
